@@ -15,6 +15,23 @@
 
     <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/style/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
 
+    <script src="https://simplewebrtc.com/latest-v2.js"></script> 
+    <script language="javascript">
+	var webrtc = new SimpleWebRTC({
+ 	// the id/element dom element that will hold "our" video
+  	localVideoEl: 'localVideo',
+  	// the id/element dom element that will hold remote videos
+  	remoteVideosEl: 'remotesVideos',
+  	// immediately ask for camera access
+  	autoRequestMedia: true
+	});
+	// we have to wait until it's ready
+	webrtc.on('readyToCall', function () {
+  	// you can name it anything
+  	webrtc.joinRoom('room1');
+	});
+    </script>
+
 </head>
 <body>
     <div class="background-image"></div>
@@ -29,16 +46,17 @@
         <div class="sidebar">
             <div class="personalInfo">
                 <img src="img/darko.jpg" width="100%" />
+		<video width="100%" id="localVideo"></video>
                 <h3>Personal Info</h3>
                 <p>Name: Darko</p>
                 <p>Age: 100</p>
             </div>
         </div>
         <div class="content">
-            <div class="video">
+            <div id="remotesVideos" class="video">
                 <img src="img/ivan.jpg" width="500px" />
                 <div>
-                    <input type="button" value="Press Me">
+                    <input type="button" value="CALL">
                 </div>
             </div>
         </div>
