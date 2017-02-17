@@ -1,66 +1,74 @@
-
 <!DOCTYPE html>
 
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<head>
-    <title>Demo</title>
-    
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+<html ng-app="demoApp">
+    <head>
+        <title>Demo</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/style.css">
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patrick+Hand|Patrick+Hand+SC" rel="stylesheet">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
 
-    <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/style/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+        <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/style/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
 
-    <script src="https://simplewebrtc.com/latest-v2.js"></script> 
-    <script language="javascript">
-	var webrtc = new SimpleWebRTC({
- 	// the id/element dom element that will hold "our" video
-  	localVideoEl: 'localVideo',
-  	// the id/element dom element that will hold remote videos
-  	remoteVideosEl: 'remotesVideos',
-  	// immediately ask for camera access
-  	autoRequestMedia: true
-	});
-	// we have to wait until it's ready
-	webrtc.on('readyToCall', function () {
-  	// you can name it anything
-  	webrtc.joinRoom('room1');
-	});
-    </script>
+        <script src="https://simplewebrtc.com/latest-v2.js"></script> 
+        <script language="javascript">
+    	var webrtc = new SimpleWebRTC({
+     	// the id/element dom element that will hold "our" video
+      	localVideoEl: 'localVideo',
+      	// the id/element dom element that will hold remote videos
+      	remoteVideosEl: 'remotesVideos',
+      	// immediately ask for camera access
+      	autoRequestMedia: true
+    	});
+    	// we have to wait until it's ready
+    	webrtc.on('readyToCall', function () {
+      	// you can name it anything
+      	webrtc.joinRoom('room1');
+    	});
+        
+        </script>
+    </head>
 
-</head>
-<body>
-    <div class="background-image"></div>
-   <div class="container">
-        <div class="navbar">
-            <ul>
-                <li><a href="" class="navbar-link">My Profile</a></li>
-                <li><a href="" class="navbar-link">My Friends</a></li>
-            </ul>
-        </div>
-        <div class="main">
-        <div class="sidebar">
-            <div class="personalInfo">
-                <img src="img/darko.jpg" width="100%" />
-		<video width="100%" id="localVideo"></video>
-                <h3>Personal Info</h3>
-                <p>Name: Darko</p>
-                <p>Age: 100</p>
+    <body ng-controller="demoController">
+        <div class="background-image"></div>
+        <div class="container">
+            <div class="navbar">
+                <ul>
+                    <li><a class="navbar-link">My Profile</a></li>
+                    <li><a class="navbar-link">My Friends</a></li>
+                </ul>
             </div>
-        </div>
-        <div class="content">
-            <div id="remotesVideos" class="video">
-                <img src="img/ivan.jpg" width="500px" />
-                <div style="margin-top: 10px;">
-                    <a>Press Me</a>
+            <div class="main">
+                <div class="sidebar">
+                    <div class="personalInfo">
+                        <img src="img/darko.jpg" id="localImg" />
+        		        <video width="0" id="localVideo"></video>
+                        <h3>Personal Info</h3>
+                        <ul>
+                            <li>Name: Darko</li>
+                            <li>Age: 100 years</li>
+                            <li>Location: Skopje</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <div class="video">
+                        <img src="img/ivan.jpg" id="remoteImg" />
+                    </div>
+                    <div id="remotesVideos"></div>
+                    <div class="callButton">
+                        <a onclick="startCall()" ng-click="hideCallBtn()" ng-if="callBtnVisible == 1">Start Call</a>
+                        <a onclick="endCall()" ng-click="showCallBtn()" ng-if="callBtnVisible == 0">End Call</a>
+                    </div>
                 </div>
             </div>
         </div>
-        </div>
-   </div>
-</body>
+    </body>
 </html>
