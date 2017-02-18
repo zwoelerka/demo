@@ -35,17 +35,17 @@
         
         </script>
     </head>
-
     <body ng-controller="demoController">
         <div class="background-image"></div>
         <div class="container">
-            <div class="navbar">
+            <div class="navbar" id="navbar">
                 <ul>
-                    <li><a class="navbar-link">My Profile</a></li>
-                    <li><a class="navbar-link">My Friends</a></li>
+                    <li><a class="navbar-link">Home</a></li>
+                    <li><a class="navbar-link">Profile</a></li>
+                    <li><a class="navbar-link">Friends</a></li>
                 </ul>
             </div>
-            <div class="main">
+            <div class="main" ng-style="mainStyle">
                 <div class="sidebar">
                     <div class="personalInfo">
                         <img src="img/darko.jpg" id="localImg" />
@@ -59,10 +59,10 @@
                     </div>
                 </div>
                 <div class="content">
+                    <div id="remotesVideos"></div>
                     <div class="video">
                         <img src="img/ivan.jpg" id="remoteImg" />
                     </div>
-                    <div id="remotesVideos"></div>
                     <div class="callButton">
                         <a onclick="startCall()" ng-click="hideCallBtn()" ng-if="callBtnVisible == 1">Start Call</a>
                         <a onclick="endCall()" ng-click="showCallBtn()" ng-if="callBtnVisible == 0">End Call</a>
