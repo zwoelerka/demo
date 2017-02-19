@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html ng-app="demoApp">
+    <head>
+        <title>Demo</title>
+        
+        <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+
+        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Gochi+Hand" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Patrick+Hand|Patrick+Hand+SC" rel="stylesheet">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+        <script src="js/angular.min.js"></script>
+        <script src="js/app.js"></script>
+
+        <!--[if lt IE 9]><link rel="stylesheet" type="text/css" media="screen" href="/style/sequencejs-theme.sliding-horizontal-parallax-ie.css" /><![endif]-->
+
+        <script src="https://simplewebrtc.com/latest-v2.js"></script> 
+        <script language="javascript">
+        	var webrtc = new SimpleWebRTC({
+         	// the id/element dom element that will hold "our" video
+          	localVideoEl: 'localVideo',
+          	// the id/element dom element that will hold remote videos
+          	remoteVideosEl: 'remotesVideos',
+          	// immediately ask for camera access
+          	autoRequestMedia: true
+        	});
+        	// we have to wait until it's ready
+        	webrtc.on('readyToCall', function () {
+          	// you can name it anything
+          	webrtc.joinRoom('room1');
+        	});
+        
+        </script>
+    </head>
+    <body ng-controller="demoController">
+        <div class="background-image"></div>
+        <div class="myContainer">
+            <div class="navigation" id="navbar">
+                <a class="title"><i>Senior Care</i></a>
+                <ul>
+                    <li><a class="navbar-link">Home</a></li>
+                    <li><a class="navbar-link">Profile</a></li>
+                    <li><a class="navbar-link">Contacts</a></li>
+                    <li><a class="navbar-link"><i class="zmdi zmdi-search" style="font-size: 21px;"></i></a></li>
+                </ul>
+            </div>
+            <div class="main" ng-style="mainStyle">
+                <div class="sidebar">
+                    <div class="personalInfo">
+                        <img src="img/ivan.jpg" id="localImg" />
+        		        <video width="0" id="localVideo"></video>
+                        <h3>Profile Info</h3>
+                        <ul>
+                            <li>Name: Mr. Ivan Petkovski</li>
+                            <li>Age: 70</li>
+                            <li>Location: HANAC PCA Senior Residence, NYC</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="content">
+                    <div id="remotesVideos"></div>
+                    <div class="video">
+                        <span style="position: absolute; height: 5.5%; min-height: 35px; width: 55%; font-weight: bold; font-size: 24px; vertical-align: middle; background-color: rgba(0,0,0, 0.6);color: white; text-align: center;">Marvin Sirota</span>
+                        <img src="img/darko.jpg" id="remoteImg" />
+                    </div>
+                    <div class="callButton">
+                        <a onclick="startCall()" ng-click="hideCallBtn()" ng-if="callBtnVisible == 1">Start Call</a>
+                        <a onclick="endCall()" ng-click="showCallBtn()" ng-if="callBtnVisible == 0">End Call</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
