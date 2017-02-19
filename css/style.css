@@ -126,6 +126,7 @@ body {
 	color: #fff;
 	padding: 0 5px 10px 5px;
 	cursor: pointer;
+	font-size: 18px;
 }
 
 /* Underline From Left */
@@ -176,7 +177,7 @@ body {
 	-webkit-box-shadow: 2px 0px 5px 0px rgba(145, 66, 66, 0.75);
     -moz-box-shadow:    2px 0px 5px 0px rgba(145, 66, 66, 0.75);
 	box-shadow:         2px 0px 5px 0px rgba(145, 66, 66, 0.75);
-	font-family: 'Patrick Hand SC', cursive;
+	font-family: 'Kalam', cursive;
 	font-size: 22px;
 }
 .sidebar img {
