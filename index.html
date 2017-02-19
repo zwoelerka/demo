@@ -4,6 +4,7 @@
     <head>
         <title>Demo</title>
         
+        <link rel="stylesheet" type="text/css" href="css/material-design-iconic-font.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">
 
         <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -37,13 +38,14 @@
     </head>
     <body ng-controller="demoController">
         <div class="background-image"></div>
-        <div class="container">
-            <div class="navbar" id="navbar">
+        <div class="myContainer">
+            <div class="navigation" id="navbar">
                 <a class="title"><i>Senior Care</i></a>
                 <ul>
                     <li><a class="navbar-link">Home</a></li>
                     <li><a class="navbar-link">Profile</a></li>
-                    <li><a class="navbar-link">Friends</a></li>
+                    <li><a class="navbar-link">Contacts</a></li>
+                    <li><a class="navbar-link"><i class="zmdi zmdi-search" style="font-size: 21px;"></i></a></li>
                 </ul>
             </div>
             <div class="main" ng-style="mainStyle">
